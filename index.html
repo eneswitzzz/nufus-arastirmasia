@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nüfus Araştırması - İnteraktif Sunum</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Giriş Ekranı -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <h1>🌍 Nüfus Araştırması Sunum Oluşturucu</h1>
+            <p>İl seçerek otomatik nüfus analizi ve modern sunum oluşturun</p>
+            
+            <div class="city-selector">
+                <label for="citySelect">İl Seçiniz:</label>
+                <select id="citySelect">
+                    <option value="">-- İl Seçin --</option>
+                    <option value="Adana">Adana</option>
+                    <option value="Adıyaman">Adıyaman</option>
+                    <option value="Afyonkarahisar">Afyonkarahisar</option>
+                    <option value="Ağrı">Ağrı</option>
+                    <option value="Aksaray">Aksaray</option>
+                    <option value="Amasya">Amasya</option>
+                    <option value="Ankara">Ankara</option>
+                    <option value="Antalya">Antalya</option>
+                    <option value="Ardahan">Ardahan</option>
+                    <option value="Artvin">Artvin</option>
+                    <option value="Aydın">Aydın</option>
+                    <option value="Balıkesir">Balıkesir</option>
+                    <option value="Bartın">Bartın</option>
+                    <option value="Batman">Batman</option>
+                    <option value="Bayburt">Bayburt</option>
+                    <option value="Bilecik">Bilecik</option>
+                    <option value="Bingöl">Bingöl</option>
+                    <option value="Bitlis">Bitlis</option>
+                    <option value="Bolu">Bolu</option>
+                    <option value="Burdur">Burdur</option>
+                    <option value="Bursa">Bursa</option>
+                    <option value="Çanakkale">Çanakkale</option>
+                    <option value="Çankırı">Çankırı</option>
+                    <option value="Çorum">Çorum</option>
+                    <option value="Denizli">Denizli</option>
+                    <option value="Diyarbakır">Diyarbakır</option>
+                    <option value="Düzce">Düzce</option>
+                    <option value="Edirne">Edirne</option>
+                    <option value="Elazığ">Elazığ</option>
+                    <option value="Erzincan">Erzincan</option>
+                    <option value="Erzurum">Erzurum</option>
+                    <option value="Eskişehir">Eskişehir</option>
+                    <option value="Gaziantep">Gaziantep</option>
+                    <option value="Giresun">Giresun</option>
+                    <option value="Gümüşhane">Gümüşhane</option>
+                    <option value="Hakkari">Hakkari</option>
+                    <option value="Hatay">Hatay</option>
+                    <option value="Iğdır">Iğdır</option>
+                    <option value="Isparta">Isparta</option>
+                    <option value="İstanbul">İstanbul</option>
+                    <option value="İzmir">İzmir</option>
+                    <option value="Kahramanmaraş">Kahramanmaraş</option>
+                    <option value="Karabük">Karabük</option>
+                    <option value="Karaman">Karaman</option>
+                    <option value="Kars">Kars</option>
+                    <option value="Kastamonu">Kastamonu</option>
+                    <option value="Kayseri">Kayseri</option>
+                    <option value="Kırıkkale">Kırıkkale</option>
+                    <option value="Kırklareli">Kırklareli</option>
+                    <option value="Kırşehir">Kırşehir</option>
+                    <option value="Kilis">Kilis</option>
+                    <option value="Kocaeli">Kocaeli</option>
+                    <option value="Konya">Konya</option>
+                    <option value="Kütahya">Kütahya</option>
+                    <option value="Malatya">Malatya</option>
+                    <option value="Manisa">Manisa</option>
+                    <option value="Mardin">Mardin</option>
+                    <option value="Mersin">Mersin</option>
+                    <option value="Muğla">Muğla</option>
+                    <option value="Muş">Muş</option>
+                    <option value="Nevşehir">Nevşehir</option>
+                    <option value="Niğde">Niğde</option>
+                    <option value="Ordu">Ordu</option>
+                    <option value="Osmaniye">Osmaniye</option>
+                    <option value="Rize">Rize</option>
+                    <option value="Sakarya">Sakarya</option>
+                    <option value="Samsun">Samsun</option>
+                    <option value="Siirt">Siirt</option>
+                    <option value="Sinop">Sinop</option>
+                    <option value="Sivas">Sivas</option>
+                    <option value="Şanlıurfa">Şanlıurfa</option>
+                    <option value="Şırnak">Şırnak</option>
+                    <option value="Tekirdağ">Tekirdağ</option>
+                    <option value="Tokat">Tokat</option>
+                    <option value="Trabzon">Trabzon</option>
+                    <option value="Tunceli">Tunceli</option>
+                    <option value="Uşak">Uşak</option>
+                    <option value="Van">Van</option>
+                    <option value="Yalova">Yalova</option>
+                    <option value="Yozgat">Yozgat</option>
+                    <option value="Zonguldak">Zonguldak</option>
+                </select>
+                
+                <button id="startBtn" class="start-btn">
+                    <span>Araştırmayı Başlat</span>
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana Sunum Ekranı -->
+    <div id="presentationScreen" class="presentation-screen" style="display: none;">
+        <div class="container">
+            <header>
+                <h1 id="cityTitle">Nüfus Araştırması</h1>
+                <button id="backBtn" class="back-btn">← Geri Dön</button>
+            </header>
+
+            <!-- Loading -->
+            <div id="loadingSection" class="loading-section">
+                <div class="loader"></div>
+                <p>Veriler analiz ediliyor...</p>
+            </div>
+
+            <!-- Sunum İçeriği -->
+            <div id="presentationContent" style="display: none;">
+                <!-- Özet Kartlar -->
+                <section class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">👥</div>
+                        <div class="card-info">
+                            <h3>Toplam Nüfus</h3>
+                            <p id="totalPopulation">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">📈</div>
+                        <div class="card-info">
+                            <h3>Nüfus Artış Oranı</h3>
+                            <p id="growthRate">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">🏙️</div>
+                        <div class="card-info">
+                            <h3>Kentleşme Oranı</h3>
+                            <p id="urbanRate">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">⚖️</div>
+                        <div class="card-info">
+                            <h3>Cinsiyet Oranı</h3>
+                            <p id="genderRatio">-</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Adım 1: Nüfuslanma Süreci -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">1</span>
+                        <h2>Nüfuslanma Süreci</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="populationChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Adım 2: Nüfus Dağılışı -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">2</span>
+                        <h2>Nüfus Dağılışı</h2>
+                    </div>
+                    <div id="distributionMap" class="map-container"></div>
+                </section>
+
+                <!-- Adım 3: Nüfus Yapısı -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">3</span>
+                        <h2>Nüfus Yapısı</h2>
+                    </div>
+                    <div class="dual-chart">
+                        <div class="chart-box">
+                            <h3>Cinsiyet Dağılımı</h3>
+                            <canvas id="genderChart"></canvas>
+                        </div>
+                        <div class="chart-box">
+                            <h3>Kentsel-Kırsal Dağılım</h3>
+                            <canvas id="urbanRuralChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Eğitim Düzeyi -->
+                    <div class="chart-box" style="margin-top: 20px;">
+                        <h3>Eğitim Düzeyi Dağılımı</h3>
+                        <canvas id="educationChart"></canvas>
+                    </div>
+                    
+                    <!-- Ekonomik Sektörler -->
+                    <div class="chart-box" style="margin-top: 20px;">
+                        <h3>Ekonomik Sektörlere Göre İstihdam</h3>
+                        <canvas id="economicChart"></canvas>
+                    </div>
+                    
+                    <!-- Yaş Grupları -->
+                    <div class="chart-box" style="margin-top: 20px;">
+                        <h3>Yaş Grupları Dağılımı</h3>
+                        <canvas id="ageGroupsChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Adım 4: Doğum, Ölüm ve Doğal Artış -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">4</span>
+                        <h2>Doğum, Ölüm ve Doğal Nüfus Artışı</h2>
+                    </div>
+                    <div class="data-table">
+                        <table id="vitalStatsTable">
+                            <thead>
+                                <tr>
+                                    <th>Gösterge</th>
+                                    <th>Değer</th>
+                                    <th>Türkiye Ortalaması</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Adım 5: Nüfus Hareketleri -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">5</span>
+                        <h2>Nüfus Hareketleri (Göç)</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="migrationChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Adım 6: Nüfus Piramidi -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">6</span>
+                        <h2>Nüfus Piramidi</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pyramidChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Adım 7: Fırsatlar -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">7</span>
+                        <h2>Nüfus Özelliklerinin Sunduğu Fırsatlar</h2>
+                    </div>
+                    <div id="opportunitiesContent" class="content-box"></div>
+                </section>
+
+                <!-- Adım 8: Sorunlar ve Çözümler -->
+                <section class="step-section">
+                    <div class="step-header">
+                        <span class="step-badge">8</span>
+                        <h2>Sorunlar ve Çözüm Önerileri</h2>
+                    </div>
+                    <div id="problemsContent" class="content-box"></div>
+                </section>
+
+                <!-- Adım 9: Sonuç -->
+                <section class="step-section conclusion">
+                    <div class="step-header">
+                        <span class="step-badge">9</span>
+                        <h2>Demografik Özet</h2>
+                    </div>
+                    <div id="conclusionContent" class="content-box"></div>
+                    <button id="downloadBtn" class="download-btn">📥 Sunumu İndir (PDF)</button>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

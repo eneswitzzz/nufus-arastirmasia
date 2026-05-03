@@ -1,0 +1,862 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(120, 0, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Giriş Ekranı */
+.welcome-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.welcome-content {
+    background: #1a1a1a;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 60px 40px;
+    border-radius: 30px;
+    box-shadow: 
+        0 0 60px rgba(168, 85, 247, 0.3),
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(168, 85, 247, 0.05);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-content h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.4));
+}
+
+.welcome-content > p {
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.city-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.city-selector label {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.city-selector select {
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 2px solid rgba(168, 85, 247, 0.4);
+    border-radius: 12px;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.city-selector select:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.city-selector select option {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.start-btn {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 
+        0 10px 30px rgba(168, 85, 247, 0.4),
+        0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(168, 85, 247, 0.5),
+        0 0 60px rgba(168, 85, 247, 0.4);
+}
+
+.start-btn:active {
+    transform: translateY(-1px);
+}
+
+.start-btn .arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.start-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Sunum Ekranı */
+.presentation-screen {
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.intro {
+    background: #f8f9fa;
+    padding: 30px;
+    border-bottom: 3px solid #667eea;
+}
+
+.intro h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.intro p {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.steps {
+    padding: 40px 30px;
+}
+
+.step {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border-left: 5px solid #667eea;
+}
+
+.step:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+    background: #fff;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.step-content p {
+    color: #555;
+    font-size: 1rem;
+}
+
+footer {
+    background: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .step {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .intro h2 {
+        font-size: 1.3rem;
+    }
+
+    .step-content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.3s; }
+.step:nth-child(4) { animation-delay: 0.4s; }
+.step:nth-child(5) { animation-delay: 0.5s; }
+.step:nth-child(6) { animation-delay: 0.6s; }
+.step:nth-child(7) { animation-delay: 0.7s; }
+.step:nth-child(8) { animation-delay: 0.8s; }
+.step:nth-child(9) { animation-delay: 0.9s; }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #1a1a1a;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 20px;
+    box-shadow: 
+        0 0 60px rgba(168, 85, 247, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b4e 100%);
+    border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+.back-btn {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background: rgba(168, 85, 247, 0.2);
+    color: white;
+    border: 2px solid rgba(168, 85, 247, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+    border-color: #a855f7;
+}
+
+/* Loading */
+.loading-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: #1a1a1a;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(168, 85, 247, 0.2);
+    border-top: 5px solid #a855f7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-section p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+}
+
+/* Özet Kartlar */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    background: #0a0a0a;
+}
+
+.summary-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(168, 85, 247, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(168, 85, 247, 0.3);
+    border-color: #a855f7;
+}
+
+.card-icon {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+}
+
+.card-info h3 {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a855f7;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Adım Bölümleri */
+.step-section {
+    padding: 40px 30px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    background: #1a1a1a;
+}
+
+.step-section:last-child {
+    border-bottom: none;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.step-badge {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.step-header h2 {
+    font-size: 1.8rem;
+    color: #e0e0e0;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+/* Grafikler */
+.chart-container {
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.dual-chart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chart-box {
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(168, 85, 247, 0.05);
+}
+
+.chart-box h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+/* Harita */
+.map-container {
+    background: #0a0a0a;
+    padding: 30px;
+    border-radius: 12px;
+    min-height: 300px;
+}
+
+/* Tablo */
+.data-table {
+    overflow-x: auto;
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.data-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    color: #e0e0e0;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover {
+    background: rgba(168, 85, 247, 0.1);
+}
+
+/* İçerik Kutuları */
+.content-box {
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.content-box h3 {
+    color: #a855f7;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.content-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content-box li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #d0d0d0;
+}
+
+.content-box li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #a855f7;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Sonuç Bölümü */
+.conclusion {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+}
+
+.download-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .welcome-content {
+        padding: 40px 30px;
+    }
+
+    .welcome-content h1 {
+        font-size: 1.8rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .back-btn {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+    }
+
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .step-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .dual-chart {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* Nüfus Dağılışı - İlçe Kartları */
+.district-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.district-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(168, 85, 247, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.district-card.very-high {
+    border-left: 5px solid #ef4444;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, #0a0a0a 100%);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(239, 68, 68, 0.2);
+}
+
+.district-card.high {
+    border-left: 5px solid #f59e0b;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, #0a0a0a 100%);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.district-card.medium {
+    border-left: 5px solid #eab308;
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, #0a0a0a 100%);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(234, 179, 8, 0.2);
+}
+
+.district-card.low {
+    border-left: 5px solid #22c55e;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, #0a0a0a 100%);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(34, 197, 94, 0.2);
+}
+
+.district-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.district-rank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+.district-card h4 {
+    font-size: 1.3rem;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    padding-right: 40px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.district-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.5));
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #a855f7;
+    flex: 1;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+}
+
+.density-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(168, 85, 247, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.density-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #a855f7 0%, #8b5cf6 100%);
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.district-card.very-high .density-fill {
+    background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.district-card.high .density-fill {
+    background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.district-card.medium .density-fill {
+    background: linear-gradient(90deg, #eab308 0%, #ca8a04 100%);
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.5);
+}
+
+.district-card.low .density-fill {
+    background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.density-label {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+/* Yoğunluk Açıklama Kutusu */
+.density-legend {
+    background: #0a0a0a;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.density-legend h4 {
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.legend-color.very-high {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+.legend-color.high {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+.legend-color.medium {
+    background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.5);
+}
+
+.legend-color.low {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+}
+
+.legend-item span:last-child {
+    font-size: 0.95rem;
+    color: #d0d0d0;
+}
